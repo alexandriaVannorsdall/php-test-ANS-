@@ -70,9 +70,9 @@ I decided to focus on usability, security, and validation over design.
 I have added tests to test the index and show methods in the PokemonControllerTest.
 
 I have also tested the API using Postman using the follow URLs:
-To get the entire list of Pokemon: https://pokeapi.co/api/v2/pokemon?limit=151
-To get a specific Pokemon: https://pokeapi.co/api/v2/pokemon/magmar
+- To get the entire list of Pokemon: https://pokeapi.co/api/v2/pokemon?limit=151
+- To get a specific Pokemon: https://pokeapi.co/api/v2/pokemon/magmar
 
-## Somethings I could have done: 
+## Some features I could have done: 
 - Style: whether that be through a CSS sheet I imported on the blade files or tailwind. 
 - Validate that the user has typed in only a Pokemon name. (I decided against this for time reasons and how many people don't have any issues spelling Pokemon?)
