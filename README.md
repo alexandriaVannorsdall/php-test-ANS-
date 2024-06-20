@@ -70,7 +70,7 @@ I decided to focus on usability, security, and validation over design.
 I have added tests to test the index and show methods in the PokemonControllerTest.
 
 I have also tested the API using Postman using the follow URLs:
-- To get the entire list of Pokemon: https://pokeapi.co/api/v2/pokemon?limit=151
+- To get the entire list of Pokemon: https://pokeapi.co/api/v2/pokemon?limit=1017
 - To get a specific Pokemon: https://pokeapi.co/api/v2/pokemon/magmar
 
 ## Some features I could have done: 
