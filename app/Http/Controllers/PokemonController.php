@@ -21,7 +21,7 @@ class PokemonController extends Controller
     {
     // Fetch entire list of Pokemon with a certain limit
     $response = Http::get('https://pokeapi.co/api/v2/pokemon', [
-        'limit' => 1017,
+        'limit' => 1025,
     ]);
    
     if ($response->failed()) {
