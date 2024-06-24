@@ -51,42 +51,54 @@ class PokemonControllerTest extends TestCase
   
       /** @test */
       public function show_it_returns_successful_response_with_specific_pokemon()
-      {
-          $pokemonName = 'pikachu'; 
-       
-          // Prepare mock Pokemon data based on the structure used in the Blade view
-          $mockPokemonData = [
-              'name' => $pokemonName,
-              'sprites' => [
-                  'front_default' => 'http://example.com/sprite.png',
-              ],
-              'species' => [
-                  'name' => 'pikachu-species',
-              ],
-              'height' => 4,
-              'weight' => 60,
-              'abilities' => [
-                  [
-                      'ability' => ['name' => 'static'],
-                  ],
-                  [
-                      'ability' => ['name' => 'lightning-rod'],
-                  ],
-              ],
-          ];
-       
-          Http::fake([
-              "https://pokeapi.co/api/v2/pokemon/{$pokemonName}" => Http::response($mockPokemonData, 200)
-          ]);
-       
-          $response = $this->get(route('pokemon.show', ['name' => $pokemonName]));
-          $response->assertStatus(200);
-      
-          $response->assertViewIs('pokemon.show');
-          
-          $response->assertViewHas('pokemon', function ($viewPokemon) use ($mockPokemonData) {
-              return $viewPokemon == $mockPokemonData;
-          });
-      }
+{
+    $pokemonName = 'pikachu'; 
+
+    // Prepare mock Pokemon data based on the structure used in the Blade view
+    $mockPokemonData = [
+        'name' => $pokemonName,
+        'sprites' => [
+            'front_default' => 'http://example.com/sprite.png',
+        ],
+        'species' => [
+            'name' => 'pikachu-species',
+        ],
+        'height' => 4,
+        'weight' => 60,
+        'types' => ['electric'],
+        'abilities' => ['static', 'lightning-rod'],
+    ];
+
+    Http::fake([
+        "https://pokeapi.co/api/v2/pokemon/{$pokemonName}" => Http::response([
+            'name' => $pokemonName,
+            'sprites' => [
+                'front_default' => 'http://example.com/sprite.png',
+            ],
+            'species' => [
+                'name' => 'pikachu-species',
+            ],
+            'height' => 4,
+            'weight' => 60,
+            'types' => [
+                ['type' => ['name' => 'electric']]
+            ],
+            'abilities' => [
+                ['ability' => ['name' => 'static']],
+                ['ability' => ['name' => 'lightning-rod']],
+            ]
+        ], 200)
+    ]);
+
+    $response = $this->get(route('pokemon.show', ['name' => $pokemonName]));
+    $response->assertStatus(200);
+  
+    $response->assertViewIs('pokemon.show');
+    
+    $response->assertViewHas('pokemon', function ($viewPokemon) use ($mockPokemonData) {
+        return $viewPokemon == $mockPokemonData;
+    });
+}
+
       
 }
