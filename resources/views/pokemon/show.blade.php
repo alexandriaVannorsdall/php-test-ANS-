@@ -10,7 +10,7 @@
     <h3>Abilities</h3>
     <ul>
         @foreach ($pokemon['abilities'] as $ability)
-        <li>{{ $ability['ability']['name'] }}</li>
+        <li>{{ $ability }}</li>
         @endforeach
     </ul>
     <a href="{{ route('pokemon.index') }}">Back to Pokédex</a>
